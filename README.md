@@ -48,3 +48,9 @@ docker exec -it <container_id> bash
 ```
 
 If the repository path changes, update the volume mount path in `runner.sh`.
+
+## Projects
+
+| # | Branch | Notion | Project description |
+|---|---|---|---|
+| 01 | [`01__Fresh_Angular_22_Standalone_App_From_Scratch`](https://github.com/abhis3k-das/daily-angular/tree/01__Fresh_Angular_22_Standalone_App_From_Scratch) | [01 - Fresh Angular 22 Standalone App From Scratch](https://app.notion.com/p/3c7498bf03a1814cbb7ec2a1ab18fe36?pvs=204) | A clean modern Angular application built from an empty folder, covering Angular CLI setup, standalone bootstrap, routing, strict TypeScript, local dev, testing, and production build verification. |
