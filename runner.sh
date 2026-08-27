@@ -4,4 +4,4 @@ docker run --rm -it \
   -v "$HOME/Desktop/Sample/daily-angular:/workspace" \
   -w /workspace \
   node:22 \
-  bash
+  bash -lc "bash /workspace/scripts/container-init.sh && exec bash"

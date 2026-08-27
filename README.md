@@ -34,6 +34,20 @@ Start the Docker container:
 
 The script mounts this repository at `/workspace` inside the container.
 
+The container is started with `--rm`, so it is deleted after it exits. Any tools installed inside the container are not kept after stopping it.
+
+## Initial Container Installation
+
+The runner executes `scripts/container-init.sh` every time the container starts.
+
+Currently installed tools:
+
+```bash
+npm install -g @angular/cli@22.1.6
+```
+
+Add future global tools or setup commands to `scripts/container-init.sh`.
+
 Inside the container:
 
 ```bash
