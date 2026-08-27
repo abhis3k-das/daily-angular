@@ -1,3 +1,7 @@
+## Story
+
+You are building a small employee profile/status card for an internal team directory. The card must display employee information from component state, visually reflect whether the employee is active or unavailable, disable an action when it should not be allowed, and update when the user interacts with it. Your task is to make the template react entirely through Angular binding syntax so you understand how component state flows into text, DOM properties and CSS classes, and how DOM events flow back into the component without manually manipulating the page.
+
 ## What You Are Building
 
 A typed profile/status card whose label, disabled state, classes and click behavior come from component state.

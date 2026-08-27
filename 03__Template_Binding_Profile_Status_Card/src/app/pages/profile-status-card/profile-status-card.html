@@ -1,0 +1,15 @@
+<div>
+  <h2>{{ name }}</h2>
+  <p>{{ role }}</p>
+
+  <p
+    [class.active]="isActive"
+    [class.inactive]="!isActive"
+  >
+    Status: {{ isActive ? 'Active' : 'Inactive' }}
+  </p>
+
+  <button [disabled]="isProcessing" (click)="toggleStatus()">
+    {{ isActive ? 'Deactivate Profile' : 'Activate Profile' }}
+  </button>
+</div>

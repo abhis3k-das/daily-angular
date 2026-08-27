@@ -1,8 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
+import { ProfileStatusCard } from './pages/profile-status-card/profile-status-card';
+
 @Component({
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, ProfileStatusCard],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',
