@@ -1,50 +1,32 @@
-# Daily Angular
+## What You Are Building
 
-Main branch setup notes for daily Angular projects.
+Create a clean modern Angular application from an empty folder and get it running without copying an existing project.
 
-## Create a Branch
+## Requirements
 
-Create a new branch from `main` for each project.
+- Use the current Angular CLI and standalone architecture.
+- Enable routing and strict TypeScript.
+- Replace starter content with one routed Home page.
+- Run dev, build and test commands once.
 
-```bash
-git switch main
-git pull
-git switch -c <number>__<project_name>
-```
+## Must Use
 
-Example:
+`ng new`, standalone bootstrap, `provideRouter`.
 
-```bash
-git switch -c 01__Fresh_Angular_22_Standalone_App_From_Scratch
-```
+## Acceptance Criteria
 
-## Setup Docker
+- [ ]  App runs locally.
+- [ ]  `/` renders your Home component.
+- [ ]  Production build succeeds.
 
-Make the runner script executable:
+## Break / Debug
 
-```bash
-chmod +x runner.sh
-```
+Introduce one bad import and one bad route, reproduce each error, then fix them from the error evidence.
 
-Start the Docker container:
+## Interview Connection
 
-```bash
-./runner.sh
-```
+Explain standalone bootstrap vs the older NgModule bootstrap model.
 
-The script mounts this repository at `/workspace` inside the container.
+## Explain It
 
-Inside the container:
-
-```bash
-cd /workspace
-```
-
-To open another terminal in the same running container:
-
-```bash
-docker ps
-docker exec -it <container_id> bash
-```
-
-If the repository path changes, update the volume mount path in `runner.sh`.
+Describe the startup chain from `main.ts` to the first rendered component without opening notes.
