@@ -1,50 +1,28 @@
-# Daily Angular
+## What You Are Building
 
-Main branch setup notes for daily Angular projects.
+A typed profile/status card whose label, disabled state, classes and click behavior come from component state.
 
-## Create a Branch
+## Requirements
 
-Create a new branch from `main` for each project.
+Use interpolation for text, property binding for a button state, event binding for actions and class binding for status styling.
 
-```bash
-git switch main
-git pull
-git switch -c <number>__<project_name>
-```
+## Must Not Use
 
-Example:
+Direct DOM manipulation.
 
-```bash
-git switch -c 01__Fresh_Angular_22_Standalone_App_From_Scratch
-```
+## Acceptance Criteria
 
-## Setup Docker
+- [ ]  UI updates only through component state.
+- [ ]  Disabled action cannot fire.
 
-Make the runner script executable:
+## Break / Debug
 
-```bash
-chmod +x runner.sh
-```
+Mix up an HTML attribute and a DOM property binding, observe the behavior, then correct it.
 
-Start the Docker container:
+## Interview Connection
 
-```bash
-./runner.sh
-```
+Explain interpolation vs property binding vs event binding.
 
-The script mounts this repository at `/workspace` inside the container.
+## Explain It
 
-Inside the container:
-
-```bash
-cd /workspace
-```
-
-To open another terminal in the same running container:
-
-```bash
-docker ps
-docker exec -it <container_id> bash
-```
-
-If the repository path changes, update the volume mount path in `runner.sh`.
+Trace one click from DOM event to component state to template update.
