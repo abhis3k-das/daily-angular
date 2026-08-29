@@ -30,3 +30,38 @@ Why does stable identity matter in repeated UI?
 ## Explain It
 
 Compare modern control flow with legacy `*ngIf/*ngFor` syntax.
+```
+<div *ngFor="let ticket of tickets; trackBy: trackByTicketId">
+  ...
+</div>
+```
+
+
+### Notes : 
+Symptom:
+After reordering tickets, the text entered in a row input stayed at the same screen position instead of following the correct ticket.
+
+Reproduction:
+1. Render tickets using track $index.
+2. Enter different text in each row input.
+3. Move a ticket up or down.
+4. Observe that the input value stays with the index position.
+
+Evidence:
+Ticket 101 had note "AAA".
+After moving ticket 101 down, "AAA" appeared beside ticket 102.
+
+Root Cause:
+$index represents the current array position, not the stable identity of the ticket. When items are reordered or deleted, Angular can reuse the existing DOM row for a different ticket.
+
+Fix:
+Changed:
+
+track $index
+
+to:
+
+track ticket.id
+
+Prevention:
+For dynamic lists where items can be inserted, removed, or reordered, track by a unique and stable domain identifier.
