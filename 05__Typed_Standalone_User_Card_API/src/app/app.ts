@@ -1,12 +1,26 @@
+import { UserCard } from './components/user-card/user-card';
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { User } from './components/user-card/user.model';
 
 @Component({
-  imports: [RouterOutlet],
+  imports: [RouterOutlet,UserCard],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',
 })
 export class App {
-  protected readonly title = signal('05__Typed_Standalone_User_Card_API');
+  adminUser: User = {
+    id: 1,
+    name: 'John Doe',
+    email: 'john@example.com',
+    role: 'Admin',
+  };
+
+  supportUser: User = {
+    id: 2,
+    name: 'Jane Smith',
+    email: 'jane@example.com',
+    role: 'Support',
+  };
 }

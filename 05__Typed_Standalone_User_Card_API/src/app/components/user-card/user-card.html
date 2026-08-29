@@ -1,0 +1,10 @@
+<div>
+  <h3>{{ user().name }}</h3>
+
+  @if (displayMode() === 'full') {
+    <p>Email: {{ user().email }}</p>
+    <p>Role: {{ user().role }}</p>
+  } @else {
+    <p>{{ user().role }}</p>
+  }
+</div>
