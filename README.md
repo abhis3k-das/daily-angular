@@ -1,50 +1,32 @@
-# Daily Angular
+## Story
 
-Main branch setup notes for daily Angular projects.
+You are building a support-ticket list where records can appear, disappear, and change order as users work with them. The screen must show loading, empty and populated states, and Angular must preserve the identity of each ticket when rows are reordered or deleted. Your task is to use modern Angular control flow and deliberately reproduce a row-identity bug first, then fix it with stable tracking so row-local UI stays attached to the correct domain record.
 
-## Create a Branch
+## What You Are Building
 
-Create a new branch from `main` for each project.
+A reorderable ticket list using modern Angular control flow.
 
-```bash
-git switch main
-git pull
-git switch -c <number>__<project_name>
-```
+## Requirements
 
-Example:
+Render loading/empty/data states with `@if`, `@for` and `@empty`. Give every ticket a stable domain ID and support deletion/reordering.
 
-```bash
-git switch -c 01__Fresh_Angular_22_Standalone_App_From_Scratch
-```
+## Restrictions
 
-## Setup Docker
+First create an intentionally poor tracking expression so row-local UI behaves incorrectly; then fix it with stable identity.
 
-Make the runner script executable:
+## Acceptance Criteria
 
-```bash
-chmod +x runner.sh
-```
+- [ ]  Empty state renders correctly.
+- [ ]  Reordering preserves the correct row identity.
 
-Start the Docker container:
+## Break / Debug
 
-```bash
-./runner.sh
-```
+Document Symptom → Reproduction → Evidence → Root Cause → Fix → Prevention.
 
-The script mounts this repository at `/workspace` inside the container.
+## Interview Connection
 
-Inside the container:
+Why does stable identity matter in repeated UI?
 
-```bash
-cd /workspace
-```
+## Explain It
 
-To open another terminal in the same running container:
-
-```bash
-docker ps
-docker exec -it <container_id> bash
-```
-
-If the repository path changes, update the volume mount path in `runner.sh`.
+Compare modern control flow with legacy `*ngIf/*ngFor` syntax.
