@@ -1,50 +1,27 @@
-# Daily Angular
+## Story
 
-Main branch setup notes for daily Angular projects.
+You are creating a reusable panel shell for several parts of an application. The shell should own layout and visual structure while allowing each parent to project different headers, body content, and actions into it. Your task is to separate reusable container structure from page-specific content so the component stays flexible without growing a long list of specialized inputs.
 
-## Create a Branch
+## What You Are Building
 
-Create a new branch from `main` for each project.
+A reusable panel/modal shell that owns layout while callers provide body/actions content.
 
-```bash
-git switch main
-git pull
-git switch -c <number>__<project_name>
-```
+## Requirements
 
-Example:
+Support projected body and action areas without adding domain-specific inputs for every possible child.
 
-```bash
-git switch -c 01__Fresh_Angular_22_Standalone_App_From_Scratch
-```
+## Acceptance Criteria
 
-## Setup Docker
+- [ ]  Same shell works for at least two unrelated use cases.
 
-Make the runner script executable:
+## Break / Debug
 
-```bash
-chmod +x runner.sh
-```
+Over-design the first API with multiple string inputs, then refactor to composition.
 
-Start the Docker container:
+## Interview Connection
 
-```bash
-./runner.sh
-```
+Composition vs configuration-heavy reusable components.
 
-The script mounts this repository at `/workspace` inside the container.
+## Explain It
 
-Inside the container:
-
-```bash
-cd /workspace
-```
-
-To open another terminal in the same running container:
-
-```bash
-docker ps
-docker exec -it <container_id> bash
-```
-
-If the repository path changes, update the volume mount path in `runner.sh`.
+Explain what the shell owns and what the consumer owns.
