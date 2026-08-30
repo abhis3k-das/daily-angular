@@ -1,74 +1,35 @@
-# Daily Angular
+## Story
 
-Main branch setup notes for daily Angular projects.
+You are building a user list where each child row can notify the parent which user was selected. The parent owns the selected user state and uses that state to update another part of the screen. Your task is to model a clean parent/child event contract so data flows down through inputs and user intent flows back up through outputs without the child reaching into parent state directly.
 
-## Create a Branch
+## What You Are Building
 
-Create a new branch from `main` for each project.
+A list of reusable child cards that emit selection and deletion intents to the parent.
 
-```bash
-git switch main
-git pull
-git switch -c <number>__<project_name>
-```
+## Requirements
 
-Example:
+The child emits IDs/events; the parent owns the collection and performs state changes.
 
-```bash
-git switch -c 01__Fresh_Angular_22_Standalone_App_From_Scratch
-```
+## Must Use
 
-## Setup Docker
+Modern output API where suitable.
 
-Make the runner script executable:
+## Must Not Use
 
-```bash
-chmod +x runner.sh
-```
+A shared service merely to communicate between direct parent and child.
 
-Start the Docker container:
+## Acceptance Criteria
 
-```bash
-./runner.sh
-```
+- [ ]  Selection and deletion are controlled by the parent.
 
-The script mounts this repository at `/workspace` inside the container.
+## Break / Debug
 
-The container is started with `--rm`, so it is deleted after it exits. Any tools installed inside the container are not kept after stopping it.
+Have the child mutate a shared object directly, observe coupling, then refactor to an event contract.
 
-## Initial Container Installation
+## Interview Connection
 
-The runner executes `scripts/container-init.sh` every time the container starts.
+Inputs vs outputs vs shared service: when would you choose each?
 
-Currently installed tools:
+## Explain It
 
-```bash
-npm install -g @angular/cli@22.1.6
-```
-
-Add future global tools or setup commands to `scripts/container-init.sh`.
-
-Inside the container:
-
-```bash
-cd /workspace
-```
-
-To open another terminal in the same running container:
-
-```bash
-docker ps
-docker exec -it <container_id> bash
-```
-
-If the repository path changes, update the volume mount path in `runner.sh`.
-
-## Projects
-
-| # | Branch | Notion | Project description |
-|---|---|---|---|
-| 01 | [`01__Fresh_Angular_22_Standalone_App_From_Scratch`](https://github.com/abhis3k-das/daily-angular/tree/01__Fresh_Angular_22_Standalone_App_From_Scratch) | [01 - Fresh Angular 22 Standalone App From Scratch](https://app.notion.com/p/3c7498bf03a1814cbb7ec2a1ab18fe36?pvs=204) | A clean modern Angular application built from an empty folder, covering Angular CLI setup, standalone bootstrap, routing, strict TypeScript, local dev, testing, and production build verification. |
-| 02 | [`01__Fresh_Angular_22_Standalone_App_From_Scratch`](https://github.com/abhis3k-das/daily-angular/tree/01__Fresh_Angular_22_Standalone_App_From_Scratch) | [02 - Angular Project Anatomy & npm Scripts Drill](https://app.notion.com/p/3c7498bf03a18158ad4eddc251f2536d?pvs=204) | A one-page Angular project map covering application code, public assets, TypeScript settings, build configuration, npm scripts, and the difference between `ng serve` and `ng build`. |
-| 03 | [`03__Template_Binding_Profile_Status_Card`](https://github.com/abhis3k-das/daily-angular/tree/03__Template_Binding_Profile_Status_Card) | [03 - Template Binding: Profile Status Card](https://app.notion.com/p/3c7498bf03a18188bc39c536f5228e62?pvs=204) | A typed employee profile/status card covering interpolation, property binding, event binding, class binding, disabled actions, and state-driven template updates without direct DOM manipulation. |
-| 04 | [`04_Modern_Control_Flow_Stable_Row_Identity_Bug_Lab`](https://github.com/abhis3k-das/daily-angular/tree/04_Modern_Control_Flow_Stable_Row_Identity_Bug_Lab) | [04 - Modern Control Flow + Stable Row Identity Bug Lab](https://app.notion.com/p/04-Modern-Control-Flow-Stable-Row-Identity-Bug-Lab-3c7498bf03a1813f85d5f4898f975ba7) | A support ticket list bug lab covering Angular `@if`, `@for`, `@empty`, stable `track` identity, item deletion, and row reordering without losing local input state. |
-| 05 | [`05__Typed_Standalone_User_Card_API`](https://github.com/abhis3k-das/daily-angular/tree/05__Typed_Standalone_User_Card_API) | [05 - Typed Standalone User Card API](https://app.notion.com/p/05-Typed-Standalone-User-Card-API-3c7498bf03a181c1bca7ce54cc4bbaab) | A reusable standalone `UserCard` component covering typed signal-based inputs, required user data, optional display preferences, parent-owned data, and template tooling checks for invalid usage. |
+Describe one-way data flow in this component tree.
