@@ -1,50 +1,32 @@
-# Daily Angular
+## Story
 
-Main branch setup notes for daily Angular projects.
+You are building a lightweight activity counter that must show both the current value and a history of changes. The goal is to model local reactive state with Angular signals, update that state predictably from user actions, and make every UI change come from signal updates rather than manual DOM work.
 
-## Create a Branch
+## What You Are Building
 
-Create a new branch from `main` for each project.
+A counter plus immutable history list using Signals.
 
-```bash
-git switch main
-git pull
-git switch -c <number>__<project_name>
-```
+## Requirements
 
-Example:
+Increment/decrement/reset, record each change and render derived history.
 
-```bash
-git switch -c 01__Fresh_Angular_22_Standalone_App_From_Scratch
-```
+## Must Use
 
-## Setup Docker
+`signal`, `set`/`update`; immutable collection updates.
 
-Make the runner script executable:
+## Acceptance Criteria
 
-```bash
-chmod +x runner.sh
-```
+- [ ]  UI always reflects the latest signal value.
+- [ ]  History updates without mutation bugs.
 
-Start the Docker container:
+## Break / Debug
 
-```bash
-./runner.sh
-```
+Mutate an array/object in place and compare behavior/reasoning with immutable replacement.
 
-The script mounts this repository at `/workspace` inside the container.
+## Interview Connection
 
-Inside the container:
+What is a Signal and what problem does it solve?
 
-```bash
-cd /workspace
-```
+## Explain It
 
-To open another terminal in the same running container:
-
-```bash
-docker ps
-docker exec -it <container_id> bash
-```
-
-If the repository path changes, update the volume mount path in `runner.sh`.
+Explain how a signal read establishes a reactive dependency.
