@@ -20,6 +20,23 @@ git switch -c 01__Fresh_Angular_22_Standalone_App_From_Scratch
 
 ## Setup Docker
 
+### Windows PowerShell
+
+Start Docker Desktop, then run:
+
+```powershell
+.\runner.ps1
+```
+
+If PowerShell blocks local scripts, run this once in the current terminal before
+starting the runner:
+
+```powershell
+Set-ExecutionPolicy -Scope Process Bypass
+```
+
+### Bash
+
 Make the runner script executable:
 
 ```bash
