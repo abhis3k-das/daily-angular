@@ -1,0 +1,14 @@
+.panel {
+  text-align: center;
+  width: 100vw;
+}
+
+.panel-header{
+  background-color: turquoise;
+}
+.panel-body{
+  background-color: brown;
+}
+.panel-action{
+  background-color: bisque;
+}
