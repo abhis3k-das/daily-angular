@@ -1,50 +1,28 @@
-# Daily Angular
+## Story
 
-Main branch setup notes for daily Angular projects.
+You are building a reusable preference control whose value can be owned by a parent component while still being edited naturally inside the child. The component should behave like a well-designed Angular form-like control: the parent supplies the current value, the child updates it through a two-way contract, and both sides stay synchronized without duplicating state or wiring separate input/output pairs manually.
 
-## Create a Branch
+## What You Are Building
 
-Create a new branch from `main` for each project.
+A reusable quantity/editor control whose value can participate in two-way binding without hiding ownership.
 
-```bash
-git switch main
-git pull
-git switch -c <number>__<project_name>
-```
+## Requirements
 
-Example:
+Implement the first version with separate input/output, then refactor to `model()` and compare the public API.
 
-```bash
-git switch -c 01__Fresh_Angular_22_Standalone_App_From_Scratch
-```
+## Acceptance Criteria
 
-## Setup Docker
+- [ ]  Parent and child remain synchronized.
+- [ ]  Validation prevents invalid values.
 
-Make the runner script executable:
+## Break / Debug
 
-```bash
-chmod +x runner.sh
-```
+Create competing local copies of the value and reproduce state drift.
 
-Start the Docker container:
+## Interview Connection
 
-```bash
-./runner.sh
-```
+When is two-way binding convenient, and when does it make state flow harder to reason about?
 
-The script mounts this repository at `/workspace` inside the container.
+## Explain It
 
-Inside the container:
-
-```bash
-cd /workspace
-```
-
-To open another terminal in the same running container:
-
-```bash
-docker ps
-docker exec -it <container_id> bash
-```
-
-If the repository path changes, update the volume mount path in `runner.sh`.
+Compare explicit input/output with a model input.

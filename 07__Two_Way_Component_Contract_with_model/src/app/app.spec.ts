@@ -15,10 +15,29 @@ describe('App', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should render title', async () => {
+  it('should synchronize quantity changes from the child to the parent', async () => {
     const fixture = TestBed.createComponent(App);
+    fixture.detectChanges();
     await fixture.whenStable();
+
+    const buttons = fixture.nativeElement.querySelectorAll('button') as NodeListOf<HTMLButtonElement>;
+    buttons[1].click();
+    fixture.detectChanges();
+
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, 07__Two_Way_Component_Contract_with_model');
+    expect(fixture.componentInstance.quantity()).toBe(2);
+    expect(compiled.textContent).toContain('Parent Quantity: 2');
+  });
+
+  it('should not allow quantity to decrease below one', async () => {
+    const fixture = TestBed.createComponent(App);
+    fixture.detectChanges();
+    await fixture.whenStable();
+
+    const decrementButton = fixture.nativeElement.querySelector('button') as HTMLButtonElement;
+    decrementButton.click();
+    fixture.detectChanges();
+
+    expect(fixture.componentInstance.quantity()).toBe(1);
   });
 });
