@@ -1,50 +1,27 @@
-# Daily Angular
+## Story
 
-Main branch setup notes for daily Angular projects.
+You are reviewing a dashboard where totals and labels are stored separately from the source state that already determines them. This duplication has created synchronization bugs. Your task is to refactor the feature so derived values are calculated with `computed()` from the real source signals, giving the UI one source of truth and removing state that can drift out of sync.
 
-## Create a Branch
+## What You Are Building
 
-Create a new branch from `main` for each project.
+A cart summary where subtotal, item count and discount eligibility are derived from one cart signal.
 
-```bash
-git switch main
-git pull
-git switch -c <number>__<project_name>
-```
+## Requirements
 
-Example:
+First store a duplicated subtotal manually, reproduce inconsistency, then remove it with `computed()`.
 
-```bash
-git switch -c 01__Fresh_Angular_22_Standalone_App_From_Scratch
-```
+## Acceptance Criteria
 
-## Setup Docker
+- [ ]  No event handler manually synchronizes derived totals.
 
-Make the runner script executable:
+## Break / Debug
 
-```bash
-chmod +x runner.sh
-```
+Create a code path that forgets to update duplicated subtotal.
 
-Start the Docker container:
+## Interview Connection
 
-```bash
-./runner.sh
-```
+Why is derived state dangerous when stored separately?
 
-The script mounts this repository at `/workspace` inside the container.
+## Explain It
 
-Inside the container:
-
-```bash
-cd /workspace
-```
-
-To open another terminal in the same running container:
-
-```bash
-docker ps
-docker exec -it <container_id> bash
-```
-
-If the repository path changes, update the volume mount path in `runner.sh`.
+`signal` vs `computed`: source state vs derived state.
