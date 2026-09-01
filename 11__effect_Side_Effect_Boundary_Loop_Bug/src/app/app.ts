@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, effect, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -8,5 +8,14 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('11__effect_Side_Effect_Boundary_Loop_Bug');
+  theme = signal<'dark' | 'light'>('dark');
+  themeEffect = effect(() => {
+    const currentTheme = this.theme();
+    localStorage.setItem('theme' , JSON.stringify(currentTheme));
+    console.log("Theme Changed",currentTheme);
+  })
+  toggleTheme = () => {
+    this.theme.update(prev => prev === 'dark' ? 'light' : 'dark')
+  }
+
 }
