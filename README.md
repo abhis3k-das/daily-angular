@@ -1,50 +1,28 @@
-# Daily Angular
+## Story
 
-Main branch setup notes for daily Angular projects.
+You are building two dependent selectors, such as country and city, where the second selection becomes invalid whenever the first selection changes. Your task is to use `linkedSignal()` so the dependent state can react to its source, preserve a valid choice when possible, and reset predictably when the upstream value makes the current selection invalid.
 
-## Create a Branch
+## What You Are Building
 
-Create a new branch from `main` for each project.
+Country → city selection where the selected city resets intelligently when the available city list changes.
 
-```bash
-git switch main
-git pull
-git switch -c <number>__<project_name>
-```
+## Requirements
 
-Example:
+Implement the dependent writable state without an effect that manually watches and resets everything.
 
-```bash
-git switch -c 01__Fresh_Angular_22_Standalone_App_From_Scratch
-```
+## Acceptance Criteria
 
-## Setup Docker
+- [ ]  Valid selection is preserved when possible.
+- [ ]  Invalid selection resets predictably.
 
-Make the runner script executable:
+## Break / Debug
 
-```bash
-chmod +x runner.sh
-```
+Implement an effect-based reset first and note the extra synchronization logic.
 
-Start the Docker container:
+## Interview Connection
 
-```bash
-./runner.sh
-```
+What problem does linked dependent state solve compared with `computed`?
 
-The script mounts this repository at `/workspace` inside the container.
+## Explain It
 
-Inside the container:
-
-```bash
-cd /workspace
-```
-
-To open another terminal in the same running container:
-
-```bash
-docker ps
-docker exec -it <container_id> bash
-```
-
-If the repository path changes, update the volume mount path in `runner.sh`.
+Why is this state writable even though it depends on another source?
