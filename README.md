@@ -1,50 +1,28 @@
-# Daily Angular
+## Story
 
-Main branch setup notes for daily Angular projects.
+You are adding a side effect to a signal-driven feature, such as persisting a preference or logging a state change. A careless implementation causes repeated updates or a feedback loop. Your task is to keep `effect()` at the side-effect boundary, understand what it tracks, and fix the loop without moving derived state into an effect.
 
-## Create a Branch
+## What You Are Building
 
-Create a new branch from `main` for each project.
+Persist a user preference and log changes without using an effect to calculate normal derived state.
 
-```bash
-git switch main
-git pull
-git switch -c <number>__<project_name>
-```
+## Requirements
 
-Example:
+Use an effect only for an external side effect. Build one incorrect effect that writes back into its own dependency and diagnose it.
 
-```bash
-git switch -c 01__Fresh_Angular_22_Standalone_App_From_Scratch
-```
+## Acceptance Criteria
 
-## Setup Docker
+- [ ]  Derived values use `computed`, not effect-driven synchronization.
+- [ ]  Persistence side effect works.
 
-Make the runner script executable:
+## Break / Debug
 
-```bash
-chmod +x runner.sh
-```
+Create and fix a reactive loop.
 
-Start the Docker container:
+## Interview Connection
 
-```bash
-./runner.sh
-```
+When should you avoid `effect()`?
 
-The script mounts this repository at `/workspace` inside the container.
+## Explain It
 
-Inside the container:
-
-```bash
-cd /workspace
-```
-
-To open another terminal in the same running container:
-
-```bash
-docker ps
-docker exec -it <container_id> bash
-```
-
-If the repository path changes, update the volume mount path in `runner.sh`.
+Give one valid and one invalid effect use case.
